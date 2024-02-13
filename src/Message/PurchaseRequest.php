@@ -27,7 +27,7 @@ class PurchaseRequest extends AbstractRequest
         $data = [
             'merchant_id' => $this->getMerchantId(),
             'login_id' => $this->getLoginId(),
-            'Password' => $this->getPassword(),
+            'password' => $this->getPassword(),
             'api_key' => $this->getApiKey(),
             'transaction_amount' => $this->getAmount(),
             'url_response' => $this->getReturnUrl(),
@@ -78,8 +78,8 @@ class PurchaseRequest extends AbstractRequest
             $lineItems[] = [
                 'merchant_product_code' => $item instanceof ItemInterface ? $item->getSku() : null,
                 'description' => $item->getName() ? substr($item->getName(), 0, 50) : null,
-                'Quantity' => $item->getQuantity(),
-                'Amount' => (int) ($item->getPrice() * $item->getQuantity() * 100),
+                'quantity' => $item->getQuantity(),
+                'amount' => (int) ($item->getPrice() * $item->getQuantity() * 100),
             ];
         }
 
