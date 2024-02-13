@@ -15,7 +15,7 @@ class PurchaseResponse extends AbstractResponse implements RedirectResponseInter
     protected $responseMessages = [
         0 => 'ACCEPT_SUCCESSFUL: Flexi Cards web service request was successful.',
         202 => 'NOT_VALID: Flexi Cards payment unavailable, possibly due to transaction value thresholds.',
-        203 => 'SYSTEM_ERROR: Unrecoverable error with the Flexi Cards payment gateway. It this issue persists please contact support.',
+        203 => 'SYSTEM_ERROR: Unrecoverable error with the Flexi Cards payment gateway. If this issue persists please contact support.',
         204 => 'INVALID_USER_DETAIL: Either the Flexi Cards username or password was incorrect.',
         209 => 'ACCESS_NOT_ALLOWED: Either the Flexi Cards API key is invalid or the service has been disabled.',
         257 => 'INVALID_PRODUCT_CODES: There are no applicable Flexi Cards product codes for the request.',
