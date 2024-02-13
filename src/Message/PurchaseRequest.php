@@ -29,7 +29,8 @@ class PurchaseRequest extends AbstractRequest
             'login_id' => $this->getLoginId(),
             'password' => $this->getPassword(),
             'api_key' => $this->getApiKey(),
-            'transaction_amount' => $this->getAmount(),
+            'merchant_transaction_id' => $this->getTransactionId(),
+            'transaction_amount' => $this->getAmountInteger(),
             'url_response' => $this->getReturnUrl(),
             'direct_to_url_response' => $this->getDirectToUrlResponse(),
             'lineItems' => $this->getLineItems(),
@@ -72,10 +73,13 @@ class PurchaseRequest extends AbstractRequest
      */
     protected function getLineItems() : array
     {
-        $lineItems = [];
+        // TODO: Confirm that this is definitely the correct format for line items.
+        $lineItems = [
+            'lineItem' => [],
+        ];
 
         foreach ($this->getItems() as $item) {
-            $lineItems[] = [
+            $lineItems['lineItem'][] = [
                 'merchant_product_code' => $item instanceof ItemInterface ? $item->getSku() : null,
                 'description' => $item->getName() ? substr($item->getName(), 0, 50) : null,
                 'quantity' => $item->getQuantity(),

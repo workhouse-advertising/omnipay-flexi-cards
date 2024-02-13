@@ -24,6 +24,14 @@ class PurchaseResponse extends AbstractResponse implements RedirectResponseInter
     /**
      * @inheritDoc
      */
+    public function getTransactionReference()
+    {
+        return $this->getData()['process_no'] ?? null;
+    }
+
+    /**
+     * @inheritDoc
+     */
     public function getMessage()
     {
         $code = (int) $this->getCode();
@@ -83,6 +91,7 @@ class PurchaseResponse extends AbstractResponse implements RedirectResponseInter
      */
     public function isSuccessful()
     {
+        // TODO: Double/triple check whether or not this should return `true` for valid redirect responses.
         return (bool) $this->getRedirectUrl();
     }
 
