@@ -1,0 +1,27 @@
+{
+    "name": "workhouse/omnipay-flexi-cards",
+    "type": "library",
+    "description": "Flexi Long Term Finance eCommerce Payment Gateway API driver for the Omnipay payment processing library",
+    "keywords": [
+        "gateway",
+        "merchant",
+        "omnipay",
+        "pay",
+        "payment",
+        "flexi",
+        "flexi cards"
+    ],
+    "homepage": "https://github.com/workhouse-advertising/omnipay-flexi-cards",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": { "Omnipay\\FlexiCards\\" : "src/" }
+    },
+    "require": {
+        "omnipay/common": "^3"
+    },
+    "require-dev": {
+        "omnipay/tests": "^3",
+        "phpunit/phpunit": "^5.7|^6"
+    },
+    "prefer-stable": true
+}
