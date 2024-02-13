@@ -13,8 +13,16 @@
     ],
     "homepage": "https://github.com/workhouse-advertising/omnipay-flexi-cards",
     "license": "MIT",
+    "authors": [
+        {
+            "name": "Simon Geoghegan",
+            "email": "simon@workhouseadvertising.com.au"
+        }
+    ],
     "autoload": {
-        "psr-4": { "Omnipay\\FlexiCards\\" : "src/" }
+        "psr-4": {
+            "Omnipay\\FlexiCards\\" : "src/"
+        }
     },
     "require": {
         "omnipay/common": "^3"
