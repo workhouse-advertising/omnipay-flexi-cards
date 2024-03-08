@@ -158,25 +158,4 @@ class PurchaseRequest extends AbstractRequest
     {
         return $this->setParameter('directToUrlResponse', $value);
     }
-
-    /**
-     * Get the value for the 'transmissionDateTime' parameter.
-     *
-     * @return string
-     */
-    public function getTransmissionDateTime()
-    {
-        return $this->getParameter('transmissionDateTime') ?? date('YmdHis');
-    }
-
-    /**
-     * Set the 'transmissionDateTime' parameter.
-     *
-     * @param $value
-     * @return self
-     */
-    public function setTransmissionDateTime($value)
-    {
-        return $this->setParameter('transmissionDateTime', $value);
-    }
 }
