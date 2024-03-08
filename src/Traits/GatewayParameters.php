@@ -68,23 +68,44 @@ trait GatewayParameters
     }
 
     /**
-     * Get the value for the 'apiKey' parameter.
+     * Get the value for the 'paymentStatusApiKey' parameter.
      *
      * @return mixed
      */
-    public function getApiKey()
+    public function getPaymentStatusApiKey()
     {
-        return $this->getParameter('apiKey');
+        return $this->getParameter('paymentStatusApiKey');
     }
 
     /**
-     * Set the 'apiKey' parameter.
+     * Set the 'paymentStatusApiKey' parameter.
      *
      * @param $value
      * @return self
      */
-    public function setApiKey($value)
+    public function setPaymentStatusApiKey($value)
     {
-        return $this->setParameter('apiKey', $value);
+        return $this->setParameter('paymentStatusApiKey', $value);
+    }
+
+    /**
+     * Get the value for the 'paymentUrlApiKey' parameter.
+     *
+     * @return mixed
+     */
+    public function getPaymentUrlApiKey()
+    {
+        return $this->getParameter('paymentUrlApiKey');
+    }
+
+    /**
+     * Set the 'paymentUrlApiKey' parameter.
+     *
+     * @param $value
+     * @return self
+     */
+    public function setPaymentUrlApiKey($value)
+    {
+        return $this->setParameter('paymentUrlApiKey', $value);
     }
 }

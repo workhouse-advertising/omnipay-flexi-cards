@@ -57,6 +57,14 @@ class PurchaseRequest extends AbstractRequest
     /**
      * @inheritDoc
      */
+    protected function getApiKey()
+    {
+        return $this->getPaymentUrlApiKey();
+    }
+
+    /**
+     * @inheritDoc
+     */
     public function getEndpoint(): string
     {
         return sprintf('%s/payment/paymenturl', rtrim($this->getBaseEndpoint(), '/'));

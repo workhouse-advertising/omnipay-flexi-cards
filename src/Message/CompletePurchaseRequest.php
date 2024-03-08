@@ -49,6 +49,14 @@ class CompletePurchaseRequest extends AbstractRequest
     /**
      * @inheritDoc
      */
+    protected function getApiKey()
+    {
+        return $this->getPaymentStatusApiKey();
+    }
+
+    /**
+     * @inheritDoc
+     */
     public function getEndpoint(): string
     {
         return sprintf('%s/payment/paymentstatus', rtrim($this->getBaseEndpoint(), '/'));

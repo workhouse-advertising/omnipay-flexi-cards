@@ -26,7 +26,8 @@ class Gateway extends AbstractGateway
             'merchantId' => null,
             'loginId' => null,
             'password' => null,
-            'apiKey' => null,
+            'paymentStatusApiKey' => null,
+            'paymentUrlApiKey' => null,
             'testMode' => false,
         ];
     }

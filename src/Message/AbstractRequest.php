@@ -59,6 +59,15 @@ abstract class AbstractRequest extends BaseAbstractRequest
     abstract protected function getEndpoint();
 
     /**
+     * Get the API key to use for the current endpoint.
+     *
+     * NOTE: Yes, seriously, they use separate API keys for each endpoint in production.
+     *
+     * @return string|null
+     */
+    abstract protected function getApiKey();
+
+    /**
      * Get the FQCN to use for a response.
      *
      * @return string
