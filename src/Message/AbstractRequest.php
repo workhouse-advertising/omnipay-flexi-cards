@@ -34,12 +34,10 @@ abstract class AbstractRequest extends BaseAbstractRequest
      */
     public function getRequestHeaders()
     {
-        // TODO: Any specific headers that we need for this to function correctly? Or is their API down right now?
+        // NOTE: Need to provide the `Content-Type` header or the API will _always_ respond with a `SYSTEM_ERROR` and error code of `203`.
+        //       This is not contained in the provided documentation but we have requested that it be added.
         return [
-            // 'Accept' => 'application/json',
-            // 'Content-Type' => 'application/json',
-            // 'Content-Type' => 'application/x-www-form-urlencoded',
-            // 'Content-Type' => 'text/plain',
+            'Content-Type' => 'application/json',
         ];
     }
 
@@ -86,9 +84,8 @@ abstract class AbstractRequest extends BaseAbstractRequest
         $requestBody = ($this->getHttpMethod() == 'GET') ? null : json_encode($data);
         $requestParams = ($this->getHttpMethod() == 'GET') ? '?' . http_build_query($data) : '';
 
-        // NOTE: Provided example request body doesn't even work, is something missing? Headers?
-        //       Is their API down or just broken?
-        // $requestBody = '{"merchant_id": "12321","login_id":"203399","password":"Passwordaoeuaoeu01","api_key":"2bef9740cd0be5995e58f9eef3249cabbd65d4bc","merchant_transaction_id": "123","transaction_amount": 2000,"include_product_codes": {"product_code": ["6_MTHS","12_MTHS"]},"url_response": "https://www.google.co.nz","direct_to_url_response": "True","lineItems": {"lineItem": {"merchant_product_code": "S7","description": "Galaxy S7","quantity": "1","amount": "2000"}},"transmission_date_time": "20160909090990"}';
+        // NOTE: Any generic error (including headers or basic field errors) will respond with a `SYSTEM_ERROR` and error code of `203`.
+        //       The API will not provide any input validation and cannot be relied on for determining the cause of errors.
 
         $httpResponse = $this->httpClient->request($this->getHttpMethod(), $this->getEndpoint() . $requestParams, $this->getRequestHeaders(), $requestBody);
         $responseData = json_decode($httpResponse->getBody(), true);

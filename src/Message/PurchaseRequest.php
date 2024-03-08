@@ -33,7 +33,11 @@ class PurchaseRequest extends AbstractRequest
             'transaction_amount' => $this->getAmountInteger(),
             'url_response' => $this->getReturnUrl(),
             'direct_to_url_response' => $this->getDirectToUrlResponse(),
-            'lineItems' => $this->getLineItems(),
+            // NOTE: Omitting `lineItems` as it is not functional in the sandbox environment
+            //       and it's an optional field anyway. Until a root cause of the issue has been
+            //       determined, it's sensible to also always exclude it for both sandbox and production.
+            //       This also guarantees that the same data is tested in both environments.
+            // 'lineItems' => $this->getLineItems(),
             'transmission_date_time' => $this->getTransmissionDateTime(),
         ];
 
@@ -74,9 +78,11 @@ class PurchaseRequest extends AbstractRequest
     protected function getLineItems() : array
     {
         // TODO: Confirm that this is definitely the correct format for line items.
-        $lineItems = [
-            'lineItem' => [],
-        ];
+        //       Neither format works in the sandbox environment
+        //       $lineItems = [
+        //           'lineItem' => ['lineItem' => ....],
+        //       ];
+        $lineItems = [];
 
         foreach ($this->getItems() as $item) {
             $lineItems['lineItem'][] = [
